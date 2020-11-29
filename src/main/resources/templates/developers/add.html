@@ -21,6 +21,15 @@
             </div>
 
             <div>
+                <label>Contact person name:
+                    <input type="text" th:field="*{contactPersonName}" name="contactPersonName">
+                </label>
+                <div th:if="${#fields.hasErrors('contactPersonName')}">
+                    <span th:each="err : ${#fields.errors('contactPersonName')}" th:text="${err}"></span>
+                </div>
+            </div>
+
+            <div>
                 <label>Contact number:
                     <input type="text" th:field="*{contactNumber}" name="contactNumber" required>
                 </label>
