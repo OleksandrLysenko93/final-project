@@ -3,7 +3,9 @@ package projects.finalproject.web.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import projects.finalproject.service.DeveloperService;
@@ -19,7 +21,20 @@ public class DeveloperController {
 
     private final DeveloperService developerService;
 
-    @PostMapping("add")
+    @GetMapping("/add")
+    public String getAddDeveloperPage(Model model) {
+        model.addAttribute(new CreateDeveloperCommand());
+        return "developers/add";
+    }
+
+    @GetMapping("/list")
+    public String getDevelopersListPage() {
+        return "developers/list";
+    }
+
+
+    //todo only admin can add/edit/delete developers
+    @PostMapping("/add")
     private String processAddDeveloper(@Valid CreateDeveloperCommand createDeveloperCommand, BindingResult bindingResult) {
         log.debug("Developer to be saved: {}", createDeveloperCommand);
 
