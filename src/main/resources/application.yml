@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: INFO
+    sql: DEBUG
+    project.graduation: DEBUG
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/final_project?useSSL=false&serverTimezone=UTC
+    username: root
+    password: Ol123456
