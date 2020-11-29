@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new developer</title>
+</head>
+<body>
+<section>
+    <h1>Add new developer</h1>
+</section>
+<section>
+    <form th:action="@{/developers/add}" th:method="post" th:object="${createDeveloperCommand}">
+        <fieldset>
+            <div>
+                <label> Name:
+                    <input type="text" th:field="*{name}" name="name" required>
+                </label>
+                <div th:if="${#fields.hasErrors('name')}">
+                    <span th:each="err : ${#fields.errors('name')}" th:text="${err}"></span>
+                </div>
+            </div>
+
+            <div>
+                <label>Contact number:
+                    <input type="text" th:field="*{contactNumber}" name="contactNumber" required>
+                </label>
+                <div th:if="${#fields.hasErrors('contactNumber')}">
+                    <span th:each="err : ${#fields.errors('contactNumber')}" th:text="${err}"></span>
+                </div>
+            </div>
+
+            <div><button type="submit">Add</button></div>
+            <div th:if="${#fields.hasGlobalErrors()}" th:value="${#fields.globalErrors()}"></div>
+
+
+        </fieldset>
+    </form>
+</section>
+</body>
+</html>
