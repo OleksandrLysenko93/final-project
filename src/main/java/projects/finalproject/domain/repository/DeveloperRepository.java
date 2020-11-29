@@ -7,5 +7,5 @@ import projects.finalproject.domain.model.Developer;
 public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 
 
-    boolean existsByName(String name);
+    boolean existsByDeveloperName(String name);
 }

@@ -7,14 +7,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "developers")
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
-@ToString @EqualsAndHashCode(of = "name")
+@ToString @EqualsAndHashCode(of = "developerName")
 public class Developer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+    @Column(nullable = false, unique = true, name = "developer_name")
+    private String developerName;
 
     @Column(name = "contact_person_name")
     private String contactPersonName;

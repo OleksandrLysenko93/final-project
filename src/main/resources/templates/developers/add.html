@@ -13,10 +13,10 @@
         <fieldset>
             <div>
                 <label> Name:
-                    <input type="text" th:field="*{name}" name="name" required>
+                    <input type="text" th:field="*{developerName}" name="developerName" required>
                 </label>
-                <div th:if="${#fields.hasErrors('name')}">
-                    <span th:each="err : ${#fields.errors('name')}" th:text="${err}"></span>
+                <div th:if="${#fields.hasErrors('developerName')}">
+                    <span th:each="err : ${#fields.errors('developerName')}" th:text="${err}"></span>
                 </div>
             </div>
 

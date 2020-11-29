@@ -13,7 +13,7 @@ public class CreateDeveloperCommand {
 
     @NotBlank
     @Size(min = 3, max = 24)
-    private String name;
+    private String developerName;
 
     private String contactPersonName;
 

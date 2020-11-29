@@ -8,7 +8,7 @@ import projects.finalproject.web.command.CreateDeveloperCommand;
 public class DeveloperConverter {
     public Developer from(CreateDeveloperCommand createDeveloperCommand) {
         return Developer.builder()
-               .name(createDeveloperCommand.getName())
+               .developerName(createDeveloperCommand.getDeveloperName())
                .contactNumber(createDeveloperCommand.getContactNumber())
                .contactPersonName(createDeveloperCommand.getContactPersonName())
                .build();

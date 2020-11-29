@@ -23,8 +23,8 @@ public class DeveloperService {
         Developer developerToBeSaved = developerConverter.from(createDeveloperCommand);
         log.debug("Developer entity received from command: {}", developerToBeSaved);
 
-        if (developerRepository.existsByName(developerToBeSaved.getName())) {
-            log.debug("Developer with such name already exists: {}", developerToBeSaved.getName());
+        if (developerRepository.existsByDeveloperName(developerToBeSaved.getDeveloperName())) {
+            log.debug("Developer with such name already exists: {}", developerToBeSaved.getDeveloperName());
         }
 
         developerRepository.save(developerToBeSaved);
