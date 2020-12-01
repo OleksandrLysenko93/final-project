@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import projects.finalproject.converter.DeveloperConverter;
 import projects.finalproject.domain.model.Developer;
 import projects.finalproject.domain.repository.DeveloperRepository;
+import projects.finalproject.exception.DeveloperAlreadyExistsException;
 import projects.finalproject.web.command.CreateDeveloperCommand;
 
 @Service
@@ -25,6 +26,7 @@ public class DeveloperService {
 
         if (developerRepository.existsByDeveloperName(developerToBeSaved.getDeveloperName())) {
             log.debug("Developer with such name already exists: {}", developerToBeSaved.getDeveloperName());
+            throw new DeveloperAlreadyExistsException("Developer with this name already exists");
         }
 
         developerRepository.save(developerToBeSaved);

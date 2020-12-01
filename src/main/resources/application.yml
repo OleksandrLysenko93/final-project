@@ -2,7 +2,7 @@ logging:
   level:
     root: INFO
     sql: DEBUG
-    project.graduation: DEBUG
+    projects.finalproject: DEBUG
 spring:
   jpa:
     hibernate:

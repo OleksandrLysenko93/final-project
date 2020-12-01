@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import projects.finalproject.exception.DeveloperAlreadyExistsException;
 import projects.finalproject.service.DeveloperService;
 import projects.finalproject.web.command.CreateDeveloperCommand;
 
@@ -45,8 +46,11 @@ public class DeveloperController {
 
         try {
             developerService.add(createDeveloperCommand);
-            log.debug("Getting developer command and passing to be saved: {}", createDeveloperCommand);
+            log.debug("Developer added successfully");
             return "redirect:/developers/list";
+        } catch (DeveloperAlreadyExistsException daee) {
+            bindingResult.rejectValue("developerName", null, "Developer with such name already exists");
+            return "developers/add";
         } catch (RuntimeException re) {
             log.warn(re.getLocalizedMessage());
             log.debug("Error while receiving developer command to be saved");
